@@ -6,3 +6,7 @@ def view_a(request):
 
 def view_b(request):
     return HttpResponse("view_b")
+
+
+def view_x(request):
+    return HttpResponse("view_x")
