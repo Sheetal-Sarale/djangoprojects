@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <h2> All Active  Books </h2>
+      <!-- {{allbooks}} -->
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Is published</th>
+            <th scope="col">Is active</th>
+            <th scope="col">Actions</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            <!-- {% for book in allbooks %}
+            {% if book.price == 680 %}
+            {{book.id}}---{{book}}---{{book.price}}<br>
+            {% else %}
+            no books <br>
+            {% endif %}
+            {% endfor %} -->
+            {% for book in allbooks %}
+          <tr>
+            <th scope="row">{{book.pk}}</th>
+            <td>{{book.name}}</td>
+            <td >{{book.price}}</td>
+            <td>{{book.qty}}</td>
+            <td>{{book.is_published}}</td>
+            <td>{{book.is_active}}</td>
+            <td>
+              <a href="{% url 'show_single_book' book.id %}" class="btn btn-primary">View</a>
+              <a href="{% url 'edit_single_book' book.id %}" class="btn btn-warning">Edit</a>
+              
+              
+                <form action="{% url 'delete_single_book' book.id %}" method="post">
+                   {% csrf_token %}
+                    <input type="submit" value="Hard Delete" class="btn btn-danger">
+                </form>
+
+                <form action="{% url 'soft_delete_single_book' book.id %}" method="post">
+                    {% csrf_token %}
+                   <input type="submit" value="Soft Delete" class="btn btn-danger">
+                </form>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+asgiref==3.7.1
+Django==4.2.1
+django-crispy-forms==2.0
+et-xmlfile==1.1.0
+mysqlclient==2.1.1
+openpyxl==3.1.2
+PyMySQL==1.0.3
+sqlparse==0.4.4
+typing_extensions==4.6.1
+tzdata==2023.3
+# <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
